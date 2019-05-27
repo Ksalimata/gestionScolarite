@@ -20,11 +20,11 @@ class CreateClassesTable extends Migration
             $table->integer('filiere_id')->unsigned()->nullable();
             $table->foreign('filiere_id')
                 ->references('id')->on('filieres')
-                ->onDelete('cascade');
-            $table->integer('matiere_id')->unsigned()->nullable();
-            $table->foreign('matiere_id')
-                ->references('id')->on('matieres')
-                ->onDelete('cascade');    
+                ->onDelete('cascade');  
+            $table->integer('niveau_id')->unsigned()->nullable();
+            $table->foreign('niveau_id')
+                ->references('id')->on('niveaux')
+                ->onDelete('cascade');        
             $table->timestamps();
         });
     }

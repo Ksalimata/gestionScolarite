@@ -55,11 +55,11 @@
       </div>
     </div>
     <div class="form-group">
-      <label>Matiere</label>
+      <label>Niveau</label>
       <div class="form-group">
-            <select type="text" id="matiere_id" name="matiere_id" required="required" class="form-control">
-                  @foreach($matieres as $matiere)
-                  <option value="{{$matiere->id}}">{{$matiere->code_matiere}}</option>
+            <select type="text" id="niveau_id" name="niveau_id" required="required" class="form-control">
+                  @foreach($niveaux as $niveau)
+                  <option value="{{$niveau->id}}">{{$niveau->code_niveau}}</option>
                   @endforeach
             </select>
       </div>

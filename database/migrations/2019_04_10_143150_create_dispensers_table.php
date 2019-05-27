@@ -21,9 +21,9 @@ class CreateDispensersTable extends Migration
             $table->foreign('matiere_id')
                 ->references('id')->on('matieres')
                 ->onDelete('cascade');
-            $table->integer('classe_id')->unsigned()->nullable();
-            $table->foreign('classe_id')
-                ->references('id')->on('classes')
+            $table->integer('filiere_id')->unsigned()->nullable();
+            $table->foreign('filiere_id')
+                ->references('id')->on('filieres')
                 ->onDelete('cascade');    
             $table->timestamps();
         });

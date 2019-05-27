@@ -22,7 +22,7 @@
 @endif            
 			<div class="page-title">
               <div class="title_left">
-                <h3>Ajouter un etudiant</h3>
+                <h3>Mofifier une filière</h3>
               </div>
 
               <div class="title_right">

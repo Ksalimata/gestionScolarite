@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreRequests\storeEtudiant;
 use App\Http\Requests\UpdateRequests\updateEtudiant;
 use DB;
+use App\Classe;
 use App\Etablissement;
 use App\Etudiant;
 
@@ -22,8 +23,9 @@ class EtudiantController extends Controller
         try
         {
             $etudiants = DB::table('etudiants')
+                                ->join('classes','classes.id','classe_id')
                                 ->join('etablissements','etablissements.id','etabli_id')
-                                ->select('etudiants.*','etablissements.nom_etabli','etablissements.adresse','etablissements.telephone')
+                                ->select('etudiants.*','classes.libelle_classe','classes.code_classe','etablissements.code_etabli','etablissements.nom_etabli')
                                 ->get(); 
 
             return view('etudiant.index',compact('etudiants'));
@@ -34,6 +36,10 @@ class EtudiantController extends Controller
         }
     }
 
+    public function plus(Etudiant $etudiant){
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -41,8 +47,9 @@ class EtudiantController extends Controller
      */
     public function create()
     {
+        $classes = Classe::all();
         $etablissements = Etablissement::all();
-        return view('etudiant.create',compact('etablissements'));
+        return view('etudiant.create',compact('classes','etablissements'));
     }
 
     /**
@@ -51,19 +58,37 @@ class EtudiantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(storeEtudiant $request)
+    public function store(Request $request)
     {
         
         try
         {
             Etudiant::create([
+
                 "mat_etudiant"=>$request['mat_etudiant'],
-                "nom_etudiant"=>$request['nom_etudiant'],
-                "prenom_etudiant"=>$request['prenom_etudiant'],
-                "sexe"=>$request['sexe'],
                 "dateNaissance"=>$request['dateNaissance'],
                 "email"=>$request['email'],
+                "nomPere"=>$request['nomPere'],
+                "nomMere"=>$request['nomMere'],
+                "casUrgence"=>$request['casUrgence'],
+                "ecole"=>$request['ecole'],
+                "scolarite"=>$request['scolarite'],
+                "nom_etudiant"=>$request['nom_etudiant'],
+                "lieu"=>$request['lieu'],
                 "telephone"=>$request['telephone'],
+                "profPere"=>$request['profPere'],
+                "profMere"=>$request['profMere'],
+                "profUrgence"=>$request['profUrgence'],
+                "prenom_etudiant"=>$request['prenom_etudiant'],
+                "nationnalite"=>$request['nationnalite'],
+                "residense"=>$request['residense'],
+                "telPere"=>$request['telPere'],
+                "telMere"=>$request['telMere'],
+                "contact"=>$request['contact'],
+                "anneOrigine"=>$request['anneOrigine'],
+                "nature"=>$request['nature'],
+                "dateInscri"=>$request['dateInscri'],
+                "classe_id"=>$request['classe_id'],
                 "etabli_id"=>$request['etabli_id']
             ]);
 
@@ -83,7 +108,9 @@ class EtudiantController extends Controller
      */
     public function show(Etudiant $etudiant)
     {
-        //
+       $classes = Classe::all();
+        $etablissements = Etablissement::all();
+        return view('etudiant.savoirPlus', compact('etudiant','classes','etablissements'));
     }
 
     /**
@@ -94,9 +121,10 @@ class EtudiantController extends Controller
      */
     public function edit(Etudiant $etudiant)
     {
+        $classes = Classe::all();
         $etablissements = Etablissement::all();
 
-        return view('etudiant.edit',compact('etudiant','etablissements'));
+        return view('etudiant.edit',compact('etudiant','classes','etablissements'));
     }
 
     /**
@@ -106,7 +134,7 @@ class EtudiantController extends Controller
      * @param  \App\Etudiant  $etudiant
      * @return \Illuminate\Http\Response
      */
-    public function update(updateEtudiant $request, Etudiant $etudiant)
+    public function update(Request $request, Etudiant $etudiant)
     {
         try
         {

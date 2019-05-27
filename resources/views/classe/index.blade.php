@@ -36,7 +36,7 @@
               			<th>Code</th>
               			<th>Libellé</th>
               			<th>Filière</th>
-                    <th>Matiere</th>
+                    <th>Niveau</th>
                     <th>Action</th>
               			</tr>
               		</thead>
@@ -47,7 +47,7 @@
               				<td>{{$classe->code_classe}}</td>
               				<td>{{$classe->libelle_classe}}</td>
                       <td>{{$classe->code_filiere}}</td>
-                      <td>{{$classe->code_matiere}}</td>
+                      <td>{{$classe->code_niveau}}</td>
               				<td>
               					
 	                   <form id="frm_supprimer_classe_{{$classe->id}}" action="{{route('classe.destroy',$classe->id)}}" method="POST">

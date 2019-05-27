@@ -36,7 +36,7 @@
     <link href="{{asset('assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
 
   </head>
-<body class="nav-md">
+<body class="nav-md" style="background: #f7f7f7">
 	<div class="container body">
       <div class="main_container">
 			@include('partials.header')

@@ -1,6 +1,6 @@
 <div class="col-md-3 left_col">
           <div class="">
-            <div class="navbar nav_title" style="border: 0;">
+            <div class="navbar nav_title" style="border: 0;background-color:#f7f7f7">
               <a href="{{route('home')}}" class="site_title"><i class="fa fa-paw" style="color:#f16a30"></i> 
                 <span style="color: #f16a30">GesScolarité!</span>
               </a>
@@ -36,6 +36,7 @@
                     <ul class="nav child_menu">
                       <li><a href="{{route('filiere.create')}}">Ajouter filiere</a></li>
                       <li><a href="{{route('filiere.index')}}">Liste filière</a></li>
+                      
                     </ul>
                   </li>
                   <li>
