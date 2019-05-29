@@ -36,10 +36,6 @@ class EtudiantController extends Controller
         }
     }
 
-    public function plus(Etudiant $etudiant){
-        
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -58,7 +54,7 @@ class EtudiantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storeEtudiant $request)
     {
         
         try
@@ -134,7 +130,7 @@ class EtudiantController extends Controller
      * @param  \App\Etudiant  $etudiant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Etudiant $etudiant)
+    public function update(updateEtudiant $request, Etudiant $etudiant)
     {
         try
         {
